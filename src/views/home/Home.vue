@@ -15,25 +15,22 @@
   </template>
 
 <script>
-    import axios from 'axios'
+   import axios from "axios"
 export default {
-    data(){
-        return {
-            products: []
-        }
-    },
-    methods: {
-      async  getProducts(){
-     const response =    await   axios.get("https://660bb1a1ccda4cbc75dd6dc3.mockapi.io/product")
-           this.products = response.data 
-
-        }
-
-    },
-    mounted(){
-        this.getProducts()
+  data(){
+    return {
+      products : []
     }
-
+  },
+  methods : {
+    async getProduct(){
+      const response =  await axios.get("https://660bb1a1ccda4cbc75dd6dc3.mockapi.io/product")
+      this.products = response.data
+    }
+  },
+   mounted(){
+    this.getProduct()
+   }
 }
 </script>
 
