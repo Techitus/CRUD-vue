@@ -7,7 +7,8 @@
       <h3>{{product.name}}</h3>
       <p>{{product.description}}</p> <br>
       <p>{{product.material}}</p>
-      <p>{{product.createdAt}}</p>
+      <p>{{product.createdAt}}</p> <br>
+      <router-link :to="'/SingleProduct/' + product.id">see more</router-link>
     </div>
   </div>
 
