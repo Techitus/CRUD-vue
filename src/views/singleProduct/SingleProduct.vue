@@ -5,7 +5,7 @@
     <h2 class="product-title">{{ products.name}}</h2>
     <p class="product-description">{{ products.description}} </p>
     <p>{{products.createdAt}}</p>
-    <a href="#" class="product-button">Delete</a>
+    <button @click="deleteProduct" class="product-button">Delete Me</button>
   </div>
 </div>
 </template>
@@ -13,23 +13,33 @@
 <script>
 import axios from "axios"
 export default {
-data(){
-  return {
-    products : {}
+  data(){
+    return {
+      products : {}
+    }
+  },
+  methods : {
+    async fetchProduct(){
+      const productId = this.$route.params.id
+      const response = await axios.get("https://660bb1a1ccda4cbc75dd6dc3.mockapi.io/product/" + productId)
+      this.products = response.data
+    }, 
+   async deleteProduct(){
+    try{
+      const productId = this.$route.params.id
+      const response = await axios.delete("https://660bb1a1ccda4cbc75dd6dc3.mockapi.io/product/" + productId)
+      alert("Product deleted")
+      this.$router.push("/")
+    }
+    catch(error){
+      console.log(error)
+    }
+   }
+  },
+  mounted(){
+    this.fetchProduct()
   }
-},
-methods : {
- async fetchProduct(){
-    const productId = this.$route.params.id
-    const response = await axios.get('https://660bb1a1ccda4cbc75dd6dc3.mockapi.io/product/' + productId)
-    this.products = response.data
-  }
-},
-mounted(){
-  this.fetchProduct()
 }
-}
-
 </script>
 
 
