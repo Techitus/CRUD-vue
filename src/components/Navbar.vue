@@ -1,14 +1,25 @@
 <template>
     <nav>
         <ul>
-            <li>Home</li>
-            <li>Create Blogs</li>
+          <li @click="redirect"> Home</li>
+         <li><router-link to="/addProduct">Add product</router-link> </li>
         </ul>
     </nav>
 </template>
 
 <script>
+export default {
+  data(){
+    return{
 
+    }
+  },
+  methods:{
+    redirect(){
+      this.$router.push('/')
+    }
+  }
+}
 </script>
 
  <style scoped>

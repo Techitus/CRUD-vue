@@ -5,7 +5,9 @@
     <h2 class="product-title">{{ products.name}}</h2>
     <p class="product-description">{{ products.description}} </p>
     <p>{{products.createdAt}}</p>
-    <button @click="deleteProduct" class="product-button">Delete Me</button>
+    <button @click="$router.push('/editProduct/' + products.id)" class="product-button">Edit Me</button>
+        <button @click="deleteProduct" class="product-button">Delete Me</button>
+
   </div>
 </div>
 </template>
